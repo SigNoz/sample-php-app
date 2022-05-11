@@ -1,0 +1,22 @@
+{
+  "name": "signoz/sample-php-app",
+  "description": "A PHP application to demonstrate OpenTelemetry based instrumentation.",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pranshu Chittora",
+      "email": "pranshu@signoz.io"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "open-telemetry/opentelemetry": "dev-main",
+    "guzzlehttp/guzzle": "*",
+    "guzzlehttp/psr7": "^2.2",
+    "php-http/guzzle7-adapter": "*",
+    "slim/slim": "~4",
+    "php-di/php-di": "^6.3",
+    "php-di/slim-bridge": "^3.2"
+  }
+}

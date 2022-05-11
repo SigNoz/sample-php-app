@@ -1,0 +1,42 @@
+x-otel-common:
+  &otel-common
+  OTEL_LOG_LEVEL: warning
+  OTEL_TRACES_SAMPLER: parentbased_always_on
+  OTEL_TRACES_EXPORTER: otlp
+  OTEL_EXPORTER_OTLP_TRACES_PROTOCOL: grpc
+  OTEL_EXPORTER_OTLP_ENDPOINT: host.docker.internal:4317
+  OTEL_TRACES_PROCESSOR: simple
+
+version: '3.7'
+services:
+  service-one:
+    image: ghcr.io/open-telemetry/opentelemetry-php/opentelemetry-php-base:latest
+    command: [ 'php', '-S', '0.0.0.0:8000' ]
+    volumes:
+      - './src:/usr/src/myapp'
+    ports:
+      - '8000:8000'
+    environment:
+      <<: *otel-common
+      OTEL_SERVICE_NAME: php-service-one
+      OTEL_RESOURCE_ATTRIBUTES: 'service.version=0.1'
+
+  service-two:
+    image: ghcr.io/open-telemetry/opentelemetry-php/opentelemetry-php-base:latest
+    command: [ 'php', '-S', '0.0.0.0:8000' ]
+    volumes:
+      - './src:/usr/src/myapp'
+    environment:
+      <<: *otel-common
+      OTEL_SERVICE_NAME: php-service-two
+      OTEL_RESOURCE_ATTRIBUTES: 'service.version=0.2'
+
+  service-three:
+    image: ghcr.io/open-telemetry/opentelemetry-php/opentelemetry-php-base:latest
+    command: [ 'php', '-S', '0.0.0.0:8000' ]
+    volumes:
+      - './src:/usr/src/myapp'
+    environment:
+      <<: *otel-common
+      OTEL_SERVICE_NAME: php-service-three
+      OTEL_RESOURCE_ATTRIBUTES: 'service.version=0.3'
