@@ -18,7 +18,7 @@ use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 use OpenTelemetry\API\Trace\SpanKind;
 
-putenv('OTEL_EXPORTER_OTLP_ENDPOINT=http://stagingapp.signoz.io:4318/v1/traces');
+putenv('OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318/v1/traces');
 putenv('OTEL_SERVICE_NAME=signoz-php-app');
 
 $exporter = new OTLPExporter(
