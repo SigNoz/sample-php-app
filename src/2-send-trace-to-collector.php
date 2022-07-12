@@ -16,6 +16,7 @@ use OpenTelemetry\Contrib\OtlpHttp\Exporter as OTLPExporter;
 use OpenTelemetry\SDK\Common\Attribute\Attributes;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
+use OpenTelemetry\API\Trace\SpanKind;
 
 putenv('OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318/v1/traces');
 putenv('OTEL_SERVICE_NAME=signoz-php-app');
@@ -35,7 +36,7 @@ $tracerProvider =  new TracerProvider(
 );
 $tracer = $tracerProvider->getTracer();
 
-$root = $span = $tracer->spanBuilder('root')->startSpan();
+$root = $span = $tracer->spanBuilder('root')->setSpanKind(SpanKind::KIND_SERVER)->startSpan();
 $span->activate();
 
 for ($i = 0; $i < 3; $i++) {
