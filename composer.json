@@ -9,14 +9,12 @@
       "email": "pranshu@signoz.io"
     }
   ],
+  "minimum-stability": "beta",
   "require": {
     "php": ">=7.4",
-    "open-telemetry/opentelemetry": "dev-main",
+    "open-telemetry/opentelemetry": "^1",
     "guzzlehttp/guzzle": "*",
     "guzzlehttp/psr7": "^2.2",
-    "php-http/guzzle7-adapter": "*",
-    "slim/slim": "~4",
-    "php-di/php-di": "^6.3",
-    "php-di/slim-bridge": "^3.2"
+    "php-http/guzzle7-adapter": "*"
   }
 }
