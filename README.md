@@ -70,9 +70,21 @@ php src/collector-grpc.php
 
 ### Running Distributed tracing example
 
+In case of SigNoz not running on host machine, override the `OTEL_EXPORTER_OTLP_ENDPOINT`
+in `docker-compose.yaml` to the correct URL. For example:
+
+```yaml
+x-otel-common:
+  &otel-common
+  OTEL_EXPORTER_OTLP_TRACES_PROTOCOL: grpc
+  OTEL_EXPORTER_OTLP_ENDPOINT: signoz.company.com:4317
+```
+
+To generate distributed traces, run:
+
 ```bash
-# navigate to the /src/distributed-tracing
-cd ./src/distributed-tracing
+# navigate to the distributed-tracing
+cd distributed-tracing
 
 docker-compose run service-one composer install
 docker-compose up
