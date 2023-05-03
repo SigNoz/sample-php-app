@@ -4,7 +4,8 @@ x-otel-common:
   OTEL_TRACES_SAMPLER: parentbased_always_on
   OTEL_TRACES_EXPORTER: otlp
   OTEL_EXPORTER_OTLP_TRACES_PROTOCOL: grpc
-  OTEL_EXPORTER_OTLP_ENDPOINT: host.docker.internal:4317
+  OTEL_EXPORTER_OTLP_ENDPOINT: signoz:4317  # Replace with SigNoz OTLP endpoint, if SigNoz not running on host machine
+  OTEL_EXPORTER_OTLP_INSECURE: true
   OTEL_TRACES_PROCESSOR: simple
 
 version: '3.7'
@@ -16,6 +17,8 @@ services:
       - './src:/usr/src/myapp'
     ports:
       - '8000:8000'
+    extra_hosts:
+      - signoz:host-gateway
     environment:
       <<: *otel-common
       OTEL_SERVICE_NAME: php-service-one
@@ -26,6 +29,8 @@ services:
     command: [ 'php', '-S', '0.0.0.0:8000' ]
     volumes:
       - './src:/usr/src/myapp'
+    extra_hosts:
+      - signoz:host-gateway
     environment:
       <<: *otel-common
       OTEL_SERVICE_NAME: php-service-two
@@ -36,6 +41,8 @@ services:
     command: [ 'php', '-S', '0.0.0.0:8000' ]
     volumes:
       - './src:/usr/src/myapp'
+    extra_hosts:
+      - signoz:host-gateway
     environment:
       <<: *otel-common
       OTEL_SERVICE_NAME: php-service-three
