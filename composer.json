@@ -5,8 +5,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Pranshu Chittora",
-      "email": "pranshu@signoz.io"
+      "name": "Hello SigNoz",
+      "email": "hello@signoz.io"
     }
   ],
   "minimum-stability": "beta",
@@ -15,6 +15,7 @@
     "open-telemetry/opentelemetry": "^1",
     "guzzlehttp/guzzle": "*",
     "guzzlehttp/psr7": "^2.2",
-    "php-http/guzzle7-adapter": "*"
+    "php-http/guzzle7-adapter": "*",
+    "monolog/monolog": "^3.3"
   }
 }

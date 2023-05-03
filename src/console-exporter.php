@@ -3,7 +3,7 @@
 declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
-// Author: Pranshu Chittora x SigNoz.io
+// Author: SigNoz.io
 // Getting Started with OTel-PHP
 // This sample demonstrates basic application instrumentation with OpenTelemetry.
 // Traces not not being sent to any collector/service, though they are outputted in the console.
